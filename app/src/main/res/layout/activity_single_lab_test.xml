@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="50dp"
+    app:cardCornerRadius="5dp"
+    android:layout_margin="8dp"
+    >
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".SingleLabTest"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linear1"
+            android:orientation="horizontal"
+            >
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/labimage"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:src="@drawable/screen1"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dummy Name"
+                android:id="@+id/test_name"
+                android:fontFamily="@font/montserrat"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_marginBottom="5dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/linear1"
+            android:id="@+id/linear2"
+            >
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dummy Desc Dummy Desc  Dummy Desc Dummy Desc Dummy Desc Dummy Desc Dummy Desc Dummy Desc Dummy Desc Dummy Desc Dummy Desc "
+                android:id="@+id/test_description"
+                android:fontFamily="@font/montserrat"
+                android:textStyle="normal"
+                android:textSize="13dp"
+                android:layout_marginBottom="5dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linear3"
+            android:orientation="horizontal"
+            android:layout_below="@id/linear2"
+            >
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5% OFF"
+                android:textColor="#FF5722"
+                android:id="@+id/test_discount"
+                android:fontFamily="@font/montserrat"
+                android:textStyle="bold"
+                android:padding="10dp"
+                android:textSize="28dp"
+                android:layout_marginBottom="5dp"
+                />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="KES 2,300"
+                android:textColor="@color/black"
+                android:id="@+id/test_cost"
+                android:fontFamily="@font/montserrat"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_marginBottom="5dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linear4"
+            android:orientation="vertical"
+            android:layout_below="@id/linear3"
+            >
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dummy ID"
+                android:id="@+id/test_id"
+                android:fontFamily="@font/montserrat"
+                android:textStyle="bold"
+                android:visibility="gone"
+                android:textSize="16dp"
+                android:layout_marginBottom="5dp"
+                />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dummy Availability"
+                android:id="@+id/test_availability"
+                android:fontFamily="@font/montserrat"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:layout_marginBottom="5dp"
+                />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dummy Info"
+                android:id="@+id/more_info"
+                android:fontFamily="@font/montserrat"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:layout_marginBottom="5dp"
+                />
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add To Cart"
+                android:layout_margin="10dp"
+                android:id="@+id/addcart"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

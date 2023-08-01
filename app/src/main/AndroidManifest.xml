@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MediLabsApp"
+        tools:targetApi="31">
+        <activity
+            android:name=".CheckOutStep1"
+            android:exported="false" />
+        <activity
+            android:name=".ViewDependants"
+            android:exported="false" />
+        <activity
+            android:name=".Single_dependant"
+            android:exported="false" />
+        <activity
+            android:name=".MemberProfile"
+            android:exported="false"
+            android:label="@string/title_activity_member_profile" />
+        <activity
+            android:name=".SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SignInActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyCart"
+            android:exported="false"
+            android:noHistory="true" />
+        <activity
+            android:name=".SingleLabTest"
+            android:exported="false" />
+        <activity
+            android:name=".LabTestsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screen2"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screen1"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
