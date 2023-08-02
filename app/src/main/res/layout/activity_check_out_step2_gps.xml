@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_margin="10dp"
-        tools:context=".SignInActivity">
+        tools:context=".CheckOutStep2GPS">
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
@@ -25,15 +25,15 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:hint="Your Surname"
+            android:layout_marginTop="20dp"
+            android:hint="Latitude Here"
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
-                android:id="@+id/surname"
+                android:id="@+id/editLatitude"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -42,14 +42,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:hint="Your Password"
+            android:hint="Longitude Here"
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:id="@+id/password"
+                android:id="@+id/editLongitude"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -57,6 +57,8 @@
         <com.google.android.material.button.MaterialButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
             android:text="Login"
             android:id="@+id/login"
             />
@@ -64,11 +66,11 @@
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Don't have an Account, Create"
+            android:text="Skip this step"
             android:padding="20dp"
             android:textStyle="bold"
             android:textColor="#2196F3"
-            android:id="@+id/linktoregister"
+            android:id="@+id/skip"
             />
 
     </LinearLayout>

@@ -17,6 +17,9 @@
             android:name=".CheckOutStep1"
             android:exported="false" />
         <activity
+            android:name=".CheckOutStep2GPS"
+            android:exported="false" />
+        <activity
             android:name=".ViewDependants"
             android:exported="false" />
         <activity
