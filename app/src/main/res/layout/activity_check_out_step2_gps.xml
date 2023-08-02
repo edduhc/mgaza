@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat"
-            android:text="Login Account"
+            android:text="Your Location"
             android:textColor="@color/black"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -53,6 +53,11 @@
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/progress"/>
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="wrap_content"
