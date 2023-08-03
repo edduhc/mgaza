@@ -3,18 +3,21 @@ package com.eduuh.medilabsapp
 import android.animation.TimeAnimator.TimeListener
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.Toast
+import com.eduuh.medilabsapp.helpers.PrefsHelper
 import com.google.android.material.button.MaterialButton
 import java.text.SimpleDateFormat
 import java.util.*
 
-class CheckoutStep1 : AppCompatActivity() {
+class CheckOutStep1 : AppCompatActivity() {
     private lateinit var buttonDatePicker: Button
     private lateinit var editTextDate: EditText
     private lateinit var btnTimePicker: Button
@@ -23,7 +26,7 @@ class CheckoutStep1 : AppCompatActivity() {
     fun showTimePicker(){
         val calender = Calendar.getInstance()
         val timePickerDialog = TimePickerDialog(
-            applicationContext,
+            this,
             timeSetListener,
             calender.get(Calendar.HOUR_OF_DAY),
             calender.get(Calendar.MINUTE),
@@ -69,29 +72,37 @@ class CheckoutStep1 : AppCompatActivity() {
             val home = findViewById<RadioButton>(R.id.radioHome)
             val away = findViewById<RadioButton>(R.id.radioAway)
             var where_taken = ""
-            if (home.isSelected){
+            if (home.isChecked){
                 where_taken = "Home"
             }//end if
-            if (away.isSelected){
+            if (away.isChecked){
                 where_taken = "Away"
             }//end if
             //Radio Button Self/Other
             val self = findViewById<RadioButton>(R.id.radioSelf)
             val other = findViewById<RadioButton>(R.id.radioOther)
             var booked_for = ""
-            if (self.isSelected){
+            if (self.isChecked){
                 booked_for = "Self"
             }//end if
-            if (other.isSelected){
+            if (other.isChecked){
                 booked_for = "Other"
             }//end if
 
             if (date.isEmpty() || time.isEmpty() || where_taken.isEmpty() || booked_for.isEmpty()){
                 Toast.makeText(applicationContext,"Empty Fields",
                     Toast.LENGTH_SHORT).show()
+                startActivity(Intent(applicationContext,CheckOutStep2GPS::class.java))
             }
             else{
                 //Intent to GPS - TODO
+                PrefsHelper.savePrefs(applicationContext,"date",date)
+                PrefsHelper.savePrefs(applicationContext,"time",time)
+                PrefsHelper.savePrefs(applicationContext,"where_taken",where_taken)
+                PrefsHelper.savePrefs(applicationContext,"booked_for",booked_for)
+
+                startActivity(Intent(applicationContext,CheckOutStep2GPS::class.java))
+
             }//end else
 
         }//end listener

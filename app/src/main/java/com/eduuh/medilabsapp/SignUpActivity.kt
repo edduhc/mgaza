@@ -62,8 +62,8 @@ class SignUpActivity : AppCompatActivity() {
         val create = findViewById<MaterialButton>(R.id.create)
         create.setOnClickListener {
         var gender = "N/A"
-        if (female.isSelected){gender = "female"}
-        if (male.isSelected){gender = "male"}
+        if (female.isChecked){gender = "female"}
+        if (male.isChecked){gender = "male"}
         if (password.text.toString() != confirm.text.toString()){
             Toast.makeText(applicationContext,"Password do not match",
             Toast.LENGTH_SHORT).show()

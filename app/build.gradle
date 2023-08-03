@@ -54,6 +54,8 @@ dependencies {
     //Volley
     //retrofit
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+    //Location
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
 
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

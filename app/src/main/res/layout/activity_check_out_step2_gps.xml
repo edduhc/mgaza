@@ -48,7 +48,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
+                android:inputType="textPersonName"
                 android:id="@+id/editLongitude"
                 />
 
@@ -62,11 +62,9 @@
         <com.google.android.material.button.MaterialButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:text="Get Location"
             android:layout_gravity="center"
-            android:text="Login"
-            android:id="@+id/login"
-            />
+            android:id="@+id/getlocation"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="match_parent"
