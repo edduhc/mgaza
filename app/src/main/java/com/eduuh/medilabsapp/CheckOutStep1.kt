@@ -3,7 +3,11 @@ package com.eduuh.medilabsapp
 import android.animation.TimeAnimator.TimeListener
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Context
 import android.content.Intent
+import android.location.Geocoder
+import android.location.LocationManager
+import android.media.audiofx.BassBoost.Settings
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -13,11 +17,12 @@ import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.Toast
 import com.eduuh.medilabsapp.helpers.PrefsHelper
+import com.google.android.gms.maps.model.LatLng
 import com.google.android.material.button.MaterialButton
 import java.text.SimpleDateFormat
 import java.util.*
 
-class CheckOutStep1 : AppCompatActivity() {
+class CheckoutStep1 : AppCompatActivity() {
     private lateinit var buttonDatePicker: Button
     private lateinit var editTextDate: EditText
     private lateinit var btnTimePicker: Button
@@ -40,7 +45,7 @@ class CheckOutStep1 : AppCompatActivity() {
         val calendar = Calendar.getInstance()  //***********
         calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
         calendar.set(Calendar.MINUTE, minute)
-        val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
+        val sdf = SimpleDateFormat("hh:mm", Locale.getDefault())
         val selectedTime = sdf.format(calendar.time)
         editTextTime.setText(selectedTime)
     }//end
@@ -74,7 +79,7 @@ class CheckOutStep1 : AppCompatActivity() {
             var where_taken = ""
             if (home.isChecked){
                 where_taken = "Home"
-            }//end if
+            }//end dif
             if (away.isChecked){
                 where_taken = "Away"
             }//end if
@@ -84,30 +89,45 @@ class CheckOutStep1 : AppCompatActivity() {
             var booked_for = ""
             if (self.isChecked){
                 booked_for = "Self"
-            }//end if
+            }//end
             if (other.isChecked){
                 booked_for = "Other"
-            }//end if
+            }//end
 
-            if (date.isEmpty() || time.isEmpty() || where_taken.isEmpty() || booked_for.isEmpty()){
-                Toast.makeText(applicationContext,"Empty Fields",
+            if (date.isEmpty() || time.isEmpty() || where_taken.isEmpty()
+                || booked_for.isEmpty()){
+
+                Toast.makeText(applicationContext, "Empty Fields",
                     Toast.LENGTH_SHORT).show()
-                startActivity(Intent(applicationContext,CheckOutStep2GPS::class.java))
             }
-            else{
+            else {
                 //Intent to GPS - TODO
-                PrefsHelper.savePrefs(applicationContext,"date",date)
-                PrefsHelper.savePrefs(applicationContext,"time",time)
-                PrefsHelper.savePrefs(applicationContext,"where_taken",where_taken)
-                PrefsHelper.savePrefs(applicationContext,"booked_for",booked_for)
-
-                startActivity(Intent(applicationContext,CheckOutStep2GPS::class.java))
+                PrefsHelper.savePrefs(applicationContext, "date", date)
+                PrefsHelper.savePrefs(applicationContext, "time", time)
+                PrefsHelper.savePrefs(applicationContext, "where_taken", where_taken)
+                PrefsHelper.savePrefs(applicationContext, "booked_for", booked_for)
+                if (isLocationEnabled()) {
+                    startActivity(Intent(applicationContext, CheckoutStep2GPS::class.java))
+                }
+                else {
+                    Toast.makeText(applicationContext, "GPS Is OFF",
+                        Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS))
+                }
 
             }//end else
-
         }//end listener
-
     }//End onCreate
+    //justpaste.it/arfi6
+    private fun isLocationEnabled(): Boolean {
+        var locationManager: LocationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(
+            LocationManager.NETWORK_PROVIDER
+        )
+    }//end
+
+
+
 
     private fun showDatePickerDialog() {
         val calendar = Calendar.getInstance()

@@ -66,6 +66,7 @@
             android:layout_gravity="center"
             android:id="@+id/getlocation"/>
 
+
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -75,6 +76,28 @@
             android:textColor="#2196F3"
             android:id="@+id/skip"
             />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Map"
+            android:layout_gravity="center"
+            android:id="@+id/map"/>
+
+        <Button
+            android:id="@+id/showMapButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show Map"
+            android:layout_gravity="center"
+            android:layout_centerInParent="true" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Complete"
+            android:layout_gravity="center"
+            android:id="@+id/complete"/>
 
     </LinearLayout>
 
