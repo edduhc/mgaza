@@ -22,7 +22,7 @@ import com.google.android.material.button.MaterialButton
 import java.text.SimpleDateFormat
 import java.util.*
 
-class CheckoutStep1 : AppCompatActivity() {
+class CheckOutStep1 : AppCompatActivity() {
     private lateinit var buttonDatePicker: Button
     private lateinit var editTextDate: EditText
     private lateinit var btnTimePicker: Button
@@ -107,7 +107,15 @@ class CheckoutStep1 : AppCompatActivity() {
                 PrefsHelper.savePrefs(applicationContext, "where_taken", where_taken)
                 PrefsHelper.savePrefs(applicationContext, "booked_for", booked_for)
                 if (isLocationEnabled()) {
-                    startActivity(Intent(applicationContext, CheckoutStep2GPS::class.java))
+                    if (booked_for=="self"){
+                        PrefsHelper.savePrefs(applicationContext,"dependant_id","")
+                        startActivity(Intent(applicationContext, CheckOutStep2GPS::class.java))
+                    }
+                    else{
+                        //Direct the user to pick a dependant
+                        startActivity(Intent(applicationContext, ViewDependants::class.java))
+                    }
+
                 }
                 else {
                     Toast.makeText(applicationContext, "GPS Is OFF",
@@ -125,9 +133,6 @@ class CheckoutStep1 : AppCompatActivity() {
             LocationManager.NETWORK_PROVIDER
         )
     }//end
-
-
-
 
     private fun showDatePickerDialog() {
         val calendar = Calendar.getInstance()

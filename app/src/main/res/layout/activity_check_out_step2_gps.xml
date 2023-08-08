@@ -77,12 +77,6 @@
             android:id="@+id/skip"
             />
 
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Map"
-            android:layout_gravity="center"
-            android:id="@+id/map"/>
 
         <Button
             android:id="@+id/showMapButton"

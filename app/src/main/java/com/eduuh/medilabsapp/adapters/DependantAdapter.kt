@@ -1,11 +1,15 @@
 package com.eduuh.medilabsapp.adapters
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.eduuh.medilabsapp.R
+import com.eduuh.medilabsapp.SingleLabTest
+import com.eduuh.medilabsapp.helpers.PrefsHelper
 import com.eduuh.medilabsapp.models.Dependant
 import com.google.android.material.textview.MaterialTextView
 
@@ -38,22 +42,14 @@ class DependantAdapter(var context: Context):
         dep_name.text = item.surname
         dep_others.text = item.others
         dep_dob.text = item.dob
-//         holder.itemView.setOnClickListener {
-//             val i = Intent(context, SingleLabTest::class.java)
-//             i.putExtra("lab_id", item.lab_id)
-//             i.putExtra("test_id", item.test_id)
-//             i.putExtra("test_discount", item.test_discount)
-//             i.putExtra("test_cost", item.test_cost)
-//             i.putExtra("test_name", item.test_name)
-//             i.putExtra("test_description", item.test_description)
-//             i.putExtra("availability", item.availability)
-//             i.putExtra("more_info", item.more_info)
-//             i.putExtra("reg_date", item.reg_date)
-//             i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-//             context.startActivity(i)
-//         }//end
-        // Toast.makeText(context, "yyy"+item.test_cost, Toast.LENGTH_SHORT).show()
-    }
+         holder.itemView.setOnClickListener {
+             ///Is confirmation dialog needed?
+                 PrefsHelper.savePrefs(context,"dependant_id", item.dependant_id)
+                 val i = Intent(context, SingleLabTest::class.java)
+                 i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                 context.startActivity(i)
+         }//end listener
+    }//end bind3
 
     override fun getItemCount(): Int {
         return itemList.size  //Count how may Items in the List

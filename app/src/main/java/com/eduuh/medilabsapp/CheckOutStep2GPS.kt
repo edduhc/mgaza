@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Geocoder
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Looper
@@ -20,13 +21,14 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textview.MaterialTextView
 
-class CheckoutStep2GPS : AppCompatActivity() {
+class CheckOutStep2GPS : AppCompatActivity() {
     private  lateinit var editLatitude: TextInputEditText
     private lateinit var editLongitude: TextInputEditText
     private lateinit var getlocation: MaterialButton
     private lateinit var progress: ProgressBar
     private lateinit var skip: MaterialTextView
     private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private lateinit var showMap : MaterialButton
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_check_out_step2_gps)
@@ -43,13 +45,18 @@ class CheckoutStep2GPS : AppCompatActivity() {
             requestLocation()
         }//end
 
-//        val map = finishActivity(R.id.map)
-//        val latitude = finishActivity(R.id.editLatitude)
-//        val longititude = finishActivity(R.id.editLongitude)
+        showMap = findViewById(R.id.showMapButton)
+        showMap.setOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("geo:${editLatitude.text}, ${editLongitude.text}")))
+        }
 
 
-        val complete = findViewById<Button>(R.id.complete)
+        val complete = findViewById<MaterialButton>(R.id.complete)
         complete.setOnClickListener {
+            PrefsHelper.savePrefs(applicationContext, "latitude",
+                editLatitude.text.toString())
+            PrefsHelper.savePrefs(applicationContext, "longitude",
+                editLongitude.text.toString())
             val intent = Intent(applicationContext, Complete::class.java)
             startActivity(intent)
         }
@@ -78,7 +85,7 @@ class CheckoutStep2GPS : AppCompatActivity() {
         val geoCoder = Geocoder(this)
         val list = geoCoder.getFromLocation(latlng.latitude, latlng.longitude,
             1)
-        return list!![0].getAddressLine(0)
+        return if (list!!.isEmpty()){""}else {list!![0].getAddressLine(0)}
     }//end
 
     @SuppressLint("MissingPermission")
@@ -93,7 +100,7 @@ class CheckoutStep2GPS : AppCompatActivity() {
 
                     val place = getAddress(LatLng(it.latitude, it.longitude));
                     Toast.makeText(applicationContext,"here $place",
-                    Toast.LENGTH_SHORT).show()
+                        Toast.LENGTH_SHORT).show()
                     //put the place ia TextView
                     val skip = findViewById<MaterialTextView>(R.id.skip)
                     skip.text = "Current Location \n $place"
